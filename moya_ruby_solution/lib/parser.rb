@@ -4,7 +4,6 @@
 
 
 require 'nokogiri'
-require 'json'
 
 class GoogleArtworksParser
 
@@ -14,7 +13,7 @@ class GoogleArtworksParser
   end
 
   def parse
-    { artworks: extract_all_artworks}.to_json
+    { artworks: extract_all_artworks}
   end
 
   def extract_all_artworks
@@ -74,5 +73,5 @@ if __FILE__ == $PROGRAM_NAME
   html = File.read("sample_html_files/van-gogh-paintings.html", encoding: "utf-8")
   parser = GoogleArtworksParser.new(html)
   result = parser.parse
-  puts JSON.pretty_generate(JSON.parse(result))
+  puts result
 end
